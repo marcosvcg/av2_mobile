@@ -65,7 +65,7 @@ class _CardapioScreenState extends State<CardapioScreen> {
           ),
         ],
       ),
-      body: ItemGrid(showFavoritesOnly: _showFavoritesOnly),
+      body: ItemGrid(_showFavoritesOnly),
       drawer: const AppDrawer(), 
     );
   }

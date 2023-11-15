@@ -7,10 +7,7 @@ import 'package:provider/provider.dart';
 class ItemGrid extends StatelessWidget {
   final bool showFavoritesOnly;
 
-  const ItemGrid({
-    super.key,
-    required this.showFavoritesOnly,
-  });
+  const ItemGrid(this.showFavoritesOnly, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

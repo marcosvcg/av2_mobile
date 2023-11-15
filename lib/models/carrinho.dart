@@ -22,10 +22,10 @@ class Carrinho with ChangeNotifier {
     return total;
   }
 
-  void addItem(CardapioItem product) {
-    if (_items.containsKey(product.id)) {
+  void addItem(CardapioItem item) {
+    if (_items.containsKey(item.id)) {
       _items.update(
-        product.id,
+        item.id,
         (existingItem) => CarrinhoItem(
           id: existingItem.id,
           itemId: existingItem.itemId,
@@ -36,13 +36,13 @@ class Carrinho with ChangeNotifier {
       );
     } else {
       _items.putIfAbsent(
-        product.id,
+        item.id,
         () => CarrinhoItem(
           id: Random().nextDouble().toString(),
-          itemId: product.id,
-          nome: product.nome,
+          itemId: item.id,
+          nome: item.nome,
           quantidade: 1,
-          preco: product.preco,
+          preco: item.preco,
         ),
       );
     }
