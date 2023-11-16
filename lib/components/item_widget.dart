@@ -17,13 +17,15 @@ class CardapioItemWidget extends StatelessWidget {
       child: GridTile(
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            onPressed: () {
-              item.deixarFavorito();
-            },
-            icon: Icon(
-                item.isFavorito ? Icons.favorite : Icons.favorite_border),
-            color: Theme.of(context).colorScheme.secondary,
+          leading: Consumer<CardapioItem>(
+            builder: (ctx, product, _) => IconButton(
+              onPressed: () {
+                product.deixarFavorito();
+              },
+              icon: Icon(
+                  product.isFavorito ? Icons.favorite : Icons.favorite_border),
+              color: Theme.of(context).colorScheme.secondary,
+            ),
           ),
           title: Text(
             item.nome,
