@@ -12,6 +12,9 @@ class ItemGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CardapioList>(context);
+
+    provider.carregarItensDoJSON();
+
     final List<CardapioItem> loadedProducts =
         showFavoritesOnly ? provider.favoriteItems : provider.items;
 
