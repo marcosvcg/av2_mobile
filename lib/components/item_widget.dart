@@ -1,17 +1,16 @@
 import 'package:cardapio/models/cardapio_item.dart';
+import 'package:cardapio/models/carrinho.dart';
 import 'package:cardapio/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CardapioItemWidget extends StatelessWidget {
-  const CardapioItemWidget({Key? key}) : super(key: key);
+  const CardapioItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<CardapioItem>(
-      context,
-      listen: false,
-    );
+    final item = Provider.of<CardapioItem>(context, listen: false);
+    final carrinho = Provider.of<Carrinho>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -29,24 +28,26 @@ class CardapioItemWidget extends StatelessWidget {
             ),
           ),
           title: Text(
-            product.nome,
+            item.nome,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              carrinho.addItem(item);
+            },
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).colorScheme.secondary,
           ),
         ),
         child: GestureDetector(
           child: Image.network(
-            product.imagemUrl,
+            item.imagemUrl,
             fit: BoxFit.cover,
           ),
           onTap: () {
             Navigator.of(context).pushNamed(
               AppRoutes.itemData,
-              arguments: product,
+              arguments: item,
             );
           },
         ),
