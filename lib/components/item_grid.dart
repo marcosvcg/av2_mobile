@@ -13,7 +13,9 @@ class ItemGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<CardapioList>(context);
 
-    provider.carregarItensDoJSON();
+    if (provider.items.isEmpty) {
+      provider.carregarItensDoJSON();
+    }
 
     final List<CardapioItem> loadedProducts =
         showFavoritesOnly ? provider.favoriteItems : provider.items;
@@ -21,9 +23,9 @@ class ItemGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: loadedProducts.length,
-      itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
+      itemBuilder: (ctx, index) => ChangeNotifierProvider<CardapioItem>.value(
         value: loadedProducts[index],
-        child: const CardapioItemWidget(),
+        child: CardapioItemWidget(),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
