@@ -15,8 +15,7 @@ class CardapioList with ChangeNotifier {
 
   Future<void> carregarItensDoJSON() async {
     try {
-      List<CardapioItem> itens = await API.getItensCardapio();
-      _items = itens;
+      _items = await API.getItensCardapio();
       notifyListeners();
     } catch (error) {
       debugPrint('Erro ao carregar itens do JSON: $error');
