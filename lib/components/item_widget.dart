@@ -32,13 +32,27 @@ class CardapioItemWidget extends StatelessWidget {
             item.nome,
             textAlign: TextAlign.center,
           ),
-          trailing: IconButton(
-            onPressed: () {
-              carrinho.addItem(item);
-            },
-            icon: const Icon(Icons.shopping_cart),
-            color: Theme.of(context).colorScheme.secondary,
-          ),
+           trailing: Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  carrinho.addItem(item);
+                },
+                icon: const Icon(Icons.shopping_cart),
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+              IconButton(
+                onPressed: () {
+                    Navigator.of(context).pushNamed(
+                    AppRoutes.itemComentarios,
+                    arguments: item,
+                  );
+                },
+                icon: const Icon(Icons.comment),
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ],
+        ),
         ),
         child: GestureDetector(
           child: Image.network(

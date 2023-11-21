@@ -1,13 +1,16 @@
 import 'package:cardapio/models/cardapio_item_list.dart';
 import 'package:cardapio/models/carrinho.dart';
 import 'package:cardapio/models/pedido_list.dart';
+import 'package:cardapio/repositories/comentario_repository.dart';
 import 'package:cardapio/screens/cardapio_screen.dart';
 import 'package:cardapio/screens/carrinho_screen.dart';
+import 'package:cardapio/screens/comentarios_do_item.dart';
 import 'package:cardapio/screens/detalhes_do_item.dart';
 import 'package:cardapio/screens/pedidos_screen.dart';
 import 'package:cardapio/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(const CardapioApp());
@@ -18,8 +21,12 @@ class CardapioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return MultiProvider(
       providers: [
+          ChangeNotifierProvider(
+          create: (_) => ComentarioRepository(),
+        ),
         ChangeNotifierProvider(
           create: (_) => CardapioList(),
         ),
@@ -44,6 +51,7 @@ class CardapioApp extends StatelessWidget {
           AppRoutes.itemData: (context) => const ItemDataScreen(),
           AppRoutes.carrinho: (context) => const CarrinhoScreen(),
           AppRoutes.pedidos: (context) => const PedidoScreen(),
+          AppRoutes.itemComentarios: (context) => const ComentarioItemScreen(),
         },
         debugShowCheckedModeBanner: false,
       ),
