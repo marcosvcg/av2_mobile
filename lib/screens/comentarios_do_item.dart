@@ -28,7 +28,7 @@ class ComentarioItemScreenState extends State<ComentarioItemScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _item = ModalRoute.of(context)!.settings.arguments as CardapioItem;
-    _carregarComentarios(_item.nome!);
+    _carregarComentarios(_item.nome);
   }
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class ComentarioItemScreenState extends State<ComentarioItemScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: _tituloController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Título do Comentário',
                 ),
               ),
@@ -58,7 +58,7 @@ class ComentarioItemScreenState extends State<ComentarioItemScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: _comentarioController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Adicione um Comentário',
                 ),
               ),
@@ -66,13 +66,13 @@ class ComentarioItemScreenState extends State<ComentarioItemScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                _salvarComentario(item.nome!, context);
+                _salvarComentario(item.nome, context);
               },
-              child: Text('Salvar Comentário'),
+              child: const Text('Salvar Comentário'),
             ),
             
             const SizedBox(height: 20),
-            Text(
+            const Text(
               'Comentários Salvos:',
               style: TextStyle(
                 fontSize: 18,
@@ -91,15 +91,15 @@ Widget _buildComentariosList() {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: _comentarios.map((comentario) {
       return Container(
-        margin: EdgeInsets.only(bottom: 8),
+        margin: const EdgeInsets.only(bottom: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 8), 
+              margin: const EdgeInsets.only(left: 8), 
               child: Text(
                 comentario.titulo,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -107,18 +107,18 @@ Widget _buildComentariosList() {
             ),
             const SizedBox(height: 8),
             Container(
-              margin: EdgeInsets.only(left: 8), 
+              margin: const EdgeInsets.only(left: 8), 
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     comentario.comentario,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),

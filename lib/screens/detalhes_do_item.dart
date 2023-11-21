@@ -30,8 +30,8 @@ class ItemDataScreen extends StatelessWidget {
             Text(
               'R\$ ${item.preco}',
               style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
+                color: Colors.black,
+                fontSize: 28,
               ),
             ),
             const SizedBox(height: 10),
@@ -41,6 +41,9 @@ class ItemDataScreen extends StatelessWidget {
               child: Text(
                 item.descricao,
                 textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
               ),
             )
           ],

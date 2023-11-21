@@ -41,10 +41,9 @@ class CardapioApp extends StatelessWidget {
         title: 'Cardapio Interativo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: Colors.purple.shade800,
+            primary: Colors.blue.shade900,
             secondary: Colors.red,
           ),
-          // fontFamily: 'Roboto',
         ),
         routes: {
           AppRoutes.home: (context) => const CardapioScreen(),
