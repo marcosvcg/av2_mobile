@@ -1,5 +1,5 @@
-# AVII
-# Cardápio
+# AVII - Programação para Dispositivos Móveis
+# Cardápio Interativo
 
 
 ## Instruções de instalação do Flutter:
